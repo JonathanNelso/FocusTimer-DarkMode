@@ -1,0 +1,228 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --bg-light-color: #ffffff;
+  --bg-dark-color: #000000;
+
+  --primary-color: #323238;
+
+  --controls-hover-color: #000000;
+
+  --sound-color: #e1e1e6;
+  --sound-selected-color: #02799d;
+  --sound-selected-icon-color: #ffffff;
+  --sound-selected-volume-color: #ffffff;
+
+  --dark-selected-color: #0A3442;
+  --dark-icon-color: #C4C4CC;
+  --dark-selected-icon-color: #FFF;
+  --dark-background-b-button: #29292E;
+  
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+
+  background-color: var(--bg-color);
+}
+
+main {
+  display: flex;
+  gap: 19.2rem;
+  align-items: center;
+  color: var(--primary-color);
+}
+
+
+.time {
+  display: flex;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 12.6rem;
+
+  margin-bottom: 2rem;
+}
+
+.controls {
+  display: flex;
+  gap: 4rem;
+}
+
+.controls button {
+  transition: all 300ms;
+}
+
+.controls button:hover {
+  transform: scale(1.1);
+}
+
+.controls button svg path {
+  fill: var(--primary-color);
+}
+
+.hide {
+  display: none;
+}
+
+.sons {
+  display: grid;
+  gap: 3.2rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.sons button {
+  background-color: var(--sound-color);
+  border-radius: 2.4rem;
+
+  width: 13.8rem;
+  height: 15.2rem;
+
+  cursor: pointer;
+
+  transition: all 400ms;
+}
+
+.sons button:hover {
+  transform: scale(1.1);
+}
+
+.sons button.selected {
+  background-color: var(--sound-selected-color);
+}
+
+.sons button svg {
+  margin-top: 2.4rem;
+}
+
+.sons button.selected svg path {
+  fill: var(--sound-selected-icon-color);
+}
+
+/* Barra de volume */
+.sons button .volume {
+  padding: 3.2rem 2.4rem 2.4rem;
+}
+
+.sons button .volume input {
+  width: 9rem;
+}
+
+button [type="range"] {
+  appearance: none;
+  background: var(--primary-color);
+
+  height: 0.4rem;
+  border-radius: 0.5rem;
+}
+
+button [type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  background: var(--primary-color);
+
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 1rem;
+}
+
+body.dark button [type="range"],
+button.selected [type="range"] {
+  background: var(--sound-selected-volume-color);
+}
+
+body.dark button [type="range"]::-webkit-slider-thumb,
+button.selected [type="range"]::-webkit-slider-thumb {
+  background: var(--sound-selected-volume-color);
+}
+
+/* Dark Mode */
+.darkOrLight {
+  position: fixed;
+  top: 6rem;
+  right: 6rem;
+}
+
+body.dark {
+  background-color: var(--bg-dark-color);
+}
+
+body.dark .sons button {
+  background: var(--dark-background-b-button);
+}
+
+body.dark button.selected {
+  background: var(--dark-selected-color);
+}
+
+body.dark button svg path {
+  fill: var(--dark-icon-color);
+}
+
+body.dark button.selected svg path {
+  fill: var(--dark-selected-icon-color);
+}
+
+body.dark main {
+  color: var(--dark-selected-icon-color);
+}
+
+
+
+/* respocividade */
+@media (max-width: 850px) {
+  main {
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 720px) {
+  main {
+    flex-direction: column;
+  }
+
+  .time {
+    font-size: 7rem;
+    justify-content: center;
+  }
+
+  .controls button svg {
+    width: 4rem;
+  }
+
+/* Buttons sons */
+  .sons button {
+    width: 11rem;
+    height: 13rem;
+  }
+
+  .sons button svg {
+    width: 4rem;
+    margin: 0;
+  }
+
+  .sons button .volume {
+    padding: 1rem;
+  }
+
+/* Dark Mode */
+  .darkOrLight {
+    top: 1rem;
+    right: 1.6rem;
+  }
+
+  .darkOrLight button svg {
+    width: 2.4rem;
+  }
+}
